@@ -4,5 +4,7 @@
 		<class>org.personnel.kachiko.comptabilite.entities.Regroupement_Compte</class>
 		<class>org.personnel.kachiko.comptabilite.entities.Compte_Comptable</class>
 		<class>org.personnel.kachiko.comptabilite.entities.Journal_Ecriture</class>
+		<class>org.personnel.kachiko.comptabilite.entities.Lnk_Compte_Regroupement</class>
+		<class>org.personnel.kachiko.comptabilite.entities.Lnk_Compte_RegroupementPK</class>
 	</persistence-unit>
 </persistence>

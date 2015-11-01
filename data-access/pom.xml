@@ -16,7 +16,7 @@
 
   <parent>
   	<groupId>org.personnel.kachiko.framework</groupId>
-  	<artifactId>kachiko-framework-data-acces-parent</artifactId>
+  	<artifactId>kachiko-framework-data-access-parent</artifactId>
   	<version>1.0</version>
   </parent>
 </project>
