@@ -19,4 +19,11 @@
   	<artifactId>kachiko-framework-data-access-parent</artifactId>
   	<version>1.0</version>
   </parent>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-entitymanager</artifactId>
+  		<version>5.0.2.Final</version>
+  	</dependency>
+  </dependencies>
 </project>

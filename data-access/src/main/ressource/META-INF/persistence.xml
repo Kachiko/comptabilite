@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="data-access">
-		<class>org.personnel.kachiko.comptabilite.entities.Regroupement_Compte</class>
+	<persistence-unit name="compta" >
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>org.personnel.kachiko.comptabilite.entities.Compte_Comptable</class>
 		<class>org.personnel.kachiko.comptabilite.entities.Journal_Ecriture</class>
 		<class>org.personnel.kachiko.comptabilite.entities.Lnk_Compte_Regroupement</class>
 		<class>org.personnel.kachiko.comptabilite.entities.Lnk_Compte_RegroupementPK</class>
+		<class>org.personnel.kachiko.comptabilite.entities.Regroupement_Compte</class>
+	
+		<properties>
+			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/D_COMPTA" />
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
+			<property name="hibernate.connection.username" value="Kachiko" />
+			<property name="hibernate.connection.password" value="Kashyyk01" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+		</properties>
 	</persistence-unit>
 </persistence>
