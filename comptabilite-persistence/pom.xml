@@ -4,4 +4,13 @@
   <artifactId>comptabilite-persistence</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <modules>
+  	<module>API</module>
+  	<module>core</module>
+  </modules>
+  <parent>
+  	<groupId>org.personnel.kachiko.framework</groupId>
+  	<artifactId>kachiko-framework-data-acces-parent</artifactId>
+  	<version>1.0</version>
+  </parent>
 </project>

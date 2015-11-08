@@ -12,6 +12,11 @@
   		<artifactId>javax.inject</artifactId>
   		<version>1</version>
   	</dependency>
+  	<dependency>
+  		<groupId>jboss</groupId>
+  		<artifactId>jboss-ejb3x</artifactId>
+  		<version>4.2.2.GA</version>
+  	</dependency>
   </dependencies>
   <packaging>pom</packaging>
   <modules>
