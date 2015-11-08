@@ -1,16 +1,22 @@
 package org.personnel.kachiko.comptabilite.service.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+
+import org.personnel.kachiko.comptabilite.persistence.dao.ReferentielComptableDao;
+import org.personnel.kachiko.comptabilite.persistence.dto.CompteComptableDto;
 import org.personnel.kachiko.comptabilite.service.ReferentielComptableSvc;
 
 @Stateless
 public class ReferentielComptableSvcImpl implements ReferentielComptableSvc {
 
-//	@Inject
-//	ComptabiliteDao dao;
-//	
-//	public List getList(){
-//		return dao.listeCompte();
-//	}
+	@Inject
+	ReferentielComptableDao dao;
+	
+	public List<CompteComptableDto> getListCompteComptable(){
+		return dao.getListCompteComptable();
+	}
 	
 }
