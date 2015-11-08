@@ -15,9 +15,10 @@ public class ComptabiliteDao {
 	@PersistenceUnit(unitName="compta")
 	private EntityManager em;
 	
+	@SuppressWarnings("unchecked")
 	public List<Compte_Comptable> listeCompte(){
 		Query qry = em.createNamedQuery("Compte_Comptable.findAll");
-		return qry.getResultList();
+		return ((List<Compte_Comptable>)qry.getResultList());
 	}
 	
 }
