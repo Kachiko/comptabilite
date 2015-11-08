@@ -10,8 +10,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="\"Regroupement_Compte\"")
-@NamedQuery(name="Regroupement_Compte.findAll", query="SELECT r FROM Regroupement_Compte r")
-public class Regroupement_Compte implements Serializable {
+@NamedQuery(name="Regroupement_Compte.findAll", query="SELECT r FROM RegroupementCompteEntity r")
+public class RegroupementCompteEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -19,7 +19,7 @@ public class Regroupement_Compte implements Serializable {
 
 	private String nom;
 
-	public Regroupement_Compte() {
+	public RegroupementCompteEntity() {
 	}
 
 	public Integer getId() {

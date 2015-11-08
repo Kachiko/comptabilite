@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 
  */
 @Embeddable
-public class Lnk_Compte_RegroupementPK implements Serializable {
+public class LnkCompteRegroupementEntityPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
@@ -18,7 +18,7 @@ public class Lnk_Compte_RegroupementPK implements Serializable {
 	@Column(insertable=false, updatable=false)
 	private Integer fkcompte;
 
-	public Lnk_Compte_RegroupementPK() {
+	public LnkCompteRegroupementEntityPK() {
 	}
 	public Integer getFkid() {
 		return this.fkid;
@@ -37,10 +37,10 @@ public class Lnk_Compte_RegroupementPK implements Serializable {
 		if (this == other) {
 			return true;
 		}
-		if (!(other instanceof Lnk_Compte_RegroupementPK)) {
+		if (!(other instanceof LnkCompteRegroupementEntityPK)) {
 			return false;
 		}
-		Lnk_Compte_RegroupementPK castOther = (Lnk_Compte_RegroupementPK)other;
+		LnkCompteRegroupementEntityPK castOther = (LnkCompteRegroupementEntityPK)other;
 		return 
 			this.fkid.equals(castOther.fkid)
 			&& this.fkcompte.equals(castOther.fkcompte);

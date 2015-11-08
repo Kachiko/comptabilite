@@ -11,22 +11,24 @@ import java.util.List;
  */
 @Entity
 @Table(name="\"Compte_Comptable\"")
-@NamedQuery(name="Compte_Comptable.findAll", query="SELECT c FROM Compte_Comptable c")
-public class Compte_Comptable implements Serializable {
+@NamedQuery(name="Compte_Comptable.findAll", query="SELECT c FROM CompteComptableEntity c")
+public class CompteComptableEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private Integer compte;
 
+	@Column(length=50)
 	private String libelle;
 
+	@Column(length=1)
 	private String sens;
 
 	//bi-directional many-to-one association to Journal_Ecriture
-	@OneToMany(mappedBy="compteComptable")
-	private List<Journal_Ecriture> journalEcritures;
+	@OneToMany(mappedBy="compteComptable", fetch=FetchType.LAZY)
+	private List<JournalEcritureEntity> journalEcritures;
 
-	public Compte_Comptable() {
+	public CompteComptableEntity() {
 	}
 
 	public Integer getCompte() {
@@ -53,22 +55,22 @@ public class Compte_Comptable implements Serializable {
 		this.sens = sens;
 	}
 
-	public List<Journal_Ecriture> getJournalEcritures() {
+	public List<JournalEcritureEntity> getJournalEcritures() {
 		return this.journalEcritures;
 	}
 
-	public void setJournalEcritures(List<Journal_Ecriture> journalEcritures) {
+	public void setJournalEcritures(List<JournalEcritureEntity> journalEcritures) {
 		this.journalEcritures = journalEcritures;
 	}
 
-	public Journal_Ecriture addJournalEcriture(Journal_Ecriture journalEcriture) {
+	public JournalEcritureEntity addJournalEcriture(JournalEcritureEntity journalEcriture) {
 		getJournalEcritures().add(journalEcriture);
 		journalEcriture.setCompteComptable(this);
 
 		return journalEcriture;
 	}
 
-	public Journal_Ecriture removeJournalEcriture(Journal_Ecriture journalEcriture) {
+	public JournalEcritureEntity removeJournalEcriture(JournalEcritureEntity journalEcriture) {
 		getJournalEcritures().remove(journalEcriture);
 		journalEcriture.setCompteComptable(null);
 

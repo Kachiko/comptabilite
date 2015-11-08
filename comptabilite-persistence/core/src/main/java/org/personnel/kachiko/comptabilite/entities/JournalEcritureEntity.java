@@ -11,8 +11,8 @@ import java.util.Date;
  */
 @Entity
 @Table(name="\"Journal_Ecriture\"")
-@NamedQuery(name="Journal_Ecriture.findAll", query="SELECT j FROM Journal_Ecriture j")
-public class Journal_Ecriture implements Serializable {
+@NamedQuery(name="Journal_Ecriture.findAll", query="SELECT j FROM JournalEcritureEntity j")
+public class JournalEcritureEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,9 +30,9 @@ public class Journal_Ecriture implements Serializable {
 	//bi-directional many-to-one association to Compte_Comptable
 	@ManyToOne
 	@JoinColumn(name="fkcompte")
-	private Compte_Comptable compteComptable;
+	private CompteComptableEntity compteComptable;
 
-	public Journal_Ecriture() {
+	public JournalEcritureEntity() {
 	}
 
 	public Long getId() {
@@ -75,11 +75,11 @@ public class Journal_Ecriture implements Serializable {
 		this.sens = sens;
 	}
 
-	public Compte_Comptable getCompteComptable() {
+	public CompteComptableEntity getCompteComptable() {
 		return this.compteComptable;
 	}
 
-	public void setCompteComptable(Compte_Comptable compteComptable) {
+	public void setCompteComptable(CompteComptableEntity compteComptable) {
 		this.compteComptable = compteComptable;
 	}
 

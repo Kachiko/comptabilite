@@ -10,7 +10,14 @@
   </modules>
   <parent>
   	<groupId>org.personnel.kachiko.framework</groupId>
-  	<artifactId>kachiko-framework-data-acces-parent</artifactId>
+  	<artifactId>kachiko-framework-persistence-parent</artifactId>
   	<version>1.0</version>
   </parent>
+  <dependencies>
+  	<dependency>
+  		<groupId>jboss</groupId>
+  		<artifactId>jboss-ejb3x</artifactId>
+  		<version>4.2.2.GA</version>
+  	</dependency>
+  </dependencies>
 </project>

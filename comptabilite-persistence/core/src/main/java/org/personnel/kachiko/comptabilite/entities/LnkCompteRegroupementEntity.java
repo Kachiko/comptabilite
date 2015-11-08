@@ -10,21 +10,21 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="\"Lnk_Compte_Regroupement\"")
-@NamedQuery(name="Lnk_Compte_Regroupement.findAll", query="SELECT l FROM Lnk_Compte_Regroupement l")
-public class Lnk_Compte_Regroupement implements Serializable {
+@NamedQuery(name="Lnk_Compte_Regroupement.findAll", query="SELECT l FROM LnkCompteRegroupementEntity l")
+public class LnkCompteRegroupementEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private Lnk_Compte_RegroupementPK id;
+	private LnkCompteRegroupementEntityPK id;
 
-	public Lnk_Compte_Regroupement() {
+	public LnkCompteRegroupementEntity() {
 	}
 
-	public Lnk_Compte_RegroupementPK getId() {
+	public LnkCompteRegroupementEntityPK getId() {
 		return this.id;
 	}
 
-	public void setId(Lnk_Compte_RegroupementPK id) {
+	public void setId(LnkCompteRegroupementEntityPK id) {
 		this.id = id;
 	}
 

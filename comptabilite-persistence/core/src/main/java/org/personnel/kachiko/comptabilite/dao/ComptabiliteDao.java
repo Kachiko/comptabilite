@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
-import org.personnel.kachiko.comptabilite.entities.Compte_Comptable;
+import org.personnel.kachiko.comptabilite.entities.CompteComptableEntity;
 
 @Stateful
 public class ComptabiliteDao {
@@ -16,9 +16,9 @@ public class ComptabiliteDao {
 	private EntityManager em;
 	
 	@SuppressWarnings("unchecked")
-	public List<Compte_Comptable> listeCompte(){
+	public List<CompteComptableEntity> listeCompte(){
 		Query qry = em.createNamedQuery("Compte_Comptable.findAll");
-		return ((List<Compte_Comptable>)qry.getResultList());
+		return ((List<CompteComptableEntity>)qry.getResultList());
 	}
 	
 }

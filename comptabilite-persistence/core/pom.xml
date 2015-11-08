@@ -2,9 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.personnel.kachiko.comptabilite</groupId>
-  <artifactId>data-access</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>comptabilite-persistence-core</artifactId>
   <packaging>jar</packaging>
 
   <name>data-access</name>
@@ -15,15 +13,20 @@
   </properties>
 
   <parent>
-  	<groupId>org.personnel.kachiko.framework</groupId>
-  	<artifactId>kachiko-framework-data-access-parent</artifactId>
-  	<version>1.0</version>
+  	<groupId>org.personnel.kachiko.comptabilite</groupId>
+  	<artifactId>comptabilite-persistence</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
   </parent>
   <dependencies>
   	<dependency>
   		<groupId>org.hibernate</groupId>
   		<artifactId>hibernate-entitymanager</artifactId>
   		<version>5.0.2.Final</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.personnel.kachiko.comptabilite</groupId>
+  		<artifactId>comptabilite-persistence-api</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
 </project>
