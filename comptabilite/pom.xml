@@ -1,17 +1,65 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
+  <parent>
+  	<groupId>org.personnel.kachiko.framework</groupId>
+  	<artifactId>kachiko-framework-parent</artifactId>
+  	<version>1.0</version>
+  </parent>
   <groupId>org.personnel.kachiko.comptabilite</groupId>
   <artifactId>comptabilite-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>comptabilite-parent</name>
-  <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+		<!-- Main Maven plugins version, see http://maven.apache.org/plugins/index.html -->
+		<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+		<!-- Core plugins versions -->
+		<maven-clean-plugin.version>2.5</maven-clean-plugin.version>
+		<maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
+		<maven-deploy-plugin.version>2.7</maven-deploy-plugin.version>
+		<maven-install-plugin.version>2.4</maven-install-plugin.version>
+		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<maven-javadoc-plugin.version>2.9</maven-javadoc-plugin.version>
+		<maven-archetype-plugin.version>2.2</maven-archetype-plugin.version>
+		<maven-assembly-plugin.version>2.3</maven-assembly-plugin.version>
+		<maven-dependency-plugin.version>2.6</maven-dependency-plugin.version>
+		<maven-enforcer-plugin.version>1.1.1</maven-enforcer-plugin.version>
+		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
+
+		<maven-site-plugin.version>3.2</maven-site-plugin.version>
+		<maven-verifier-plugin.version>1.0</maven-verifier-plugin.version>
+		<maven-failsafe-plugin.version>2.12.4</maven-failsafe-plugin.version>
+		<maven-surefire-plugin.version>2.12.4</maven-surefire-plugin.version>
+		<maven-surefire-report-plugin.version>2.12.4</maven-surefire-report-plugin.version>
+		<jacoco-maven-plugin.version>0.6.2.201302030002</jacoco-maven-plugin.version>
+
+		<!-- Packaging types / tools versions -->
+		<maven-ear-plugin.version>2.8</maven-ear-plugin.version>
+		<maven-ejb-plugin.version>2.3</maven-ejb-plugin.version>
+		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+		<maven-war-plugin.version>2.3</maven-war-plugin.version>
+		<maven-rar-plugin.version>2.3</maven-rar-plugin.version>
+
+		<!-- Tools plugins versions -->
+		<maven-help-plugin.version>2.1.1</maven-help-plugin.version>
+		<maven-release-plugin.version>2.1.5</maven-release-plugin.version>
+		<versions-maven-plugin.version>1.3.1</versions-maven-plugin.version>
+		<build-helper-maven-plugin.version>1.7</build-helper-maven-plugin.version>
+		<maven-invoker-plugin.version>1.5</maven-invoker-plugin.version>
+		<jenkins-maven-plugin.version>0.2.5</jenkins-maven-plugin.version>
+
+		<cargo-maven2-plugin.version>1.3.3</cargo-maven2-plugin.version>
+
+		<sql-maven-plugin.version>1.5</sql-maven-plugin.version>
+		
+		<!-- GWT plugins -->
+		<gwt-maven-plugin.version>2.5.1</gwt-maven-plugin.version>
   </properties>
 
   <dependencies>
@@ -22,6 +70,11 @@
   	<dependency>
   		<groupId>postgresql</groupId>
   		<artifactId>postgresql</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.personnel.kachiko.framework</groupId>
+  		<artifactId>kachiko-framework-common</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
   <dependencyManagement>
@@ -38,4 +91,354 @@
   		</dependency>
   	</dependencies>
   </dependencyManagement>
+  
+  
+  <build>
+		<pluginManagement>
+			<plugins>
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<!-- Main Maven plugins, see http://maven.apache.org/plugins/index.html -->
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<!-- Core plugins : Plugins corresponding to default core phases (ie.
+					clean, compile). They may have muliple goals as well. -->
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<plugin>
+					<!-- Clean up after the build. -->
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven-clean-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<!-- Compiles Java sources. -->
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Deploy the built artifact to the remote repository. -->
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven-deploy-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<!-- Run the Junit integration tests in an isolated classloader. -->
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${maven-failsafe-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<!-- Install the built artifact into the local repository. -->
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven-install-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<!-- Copy the resources to the output directory for including in the
+						JAR. -->
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Generate a site for the current project. -->
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${maven-site-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>jacoco-prepare-agent</id>
+							<phase>process-test-classes</phase>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+							<configuration>
+								<propertyName>coverageAgent</propertyName>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<!-- Run the Junit unit tests in an isolated classloader. -->
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin.version}</version>
+					<configuration>
+						<forkMode>always</forkMode>
+						<argLine>-Xmx256m ${coverageAgent}</argLine>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Useful for integration tests - verifies the existence of certain
+						conditions. -->
+					<artifactId>maven-verifier-plugin</artifactId>
+					<version>${maven-verifier-plugin.version}</version>
+				</plugin>
+
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<!-- Packaging types / tools : These plugins relate to packaging respective
+					artifact types. -->
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<plugin>
+					<!-- Generate an EAR from the current project. -->
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>${maven-ear-plugin.version}</version>
+					<configuration>
+						<displayName>${project.name}</displayName>
+						<version>6</version> <!--  Java EE 6 -->
+						<defaultLibBundleDir>/lib</defaultLibBundleDir>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Build an EJB (and optional client) from the current project. -->
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>${maven-ejb-plugin.version}</version>
+					<configuration>
+						<ejbVersion>3.1</ejbVersion>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Build a JAR from the current project. -->
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar-plugin.version}</version>
+					<configuration>
+						<archive>
+							<manifestEntries>
+								<Maven-groupId>${project.groupId}</Maven-groupId>
+								<Maven-artefactId>${project.artifactId}</Maven-artefactId>
+								<Maven-version>${project.version}</Maven-version>
+								<Maven-build-timestamp>${maven.build.timestamp}</Maven-build-timestamp>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Build a WAR from the current project. -->
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven-war-plugin.version}</version>
+					<configuration>
+						<archive>
+							<manifestEntries>
+								<Maven-groupId>${project.groupId}</Maven-groupId>
+								<Maven-artefactId>${project.artifactId}</Maven-artefactId>
+								<Maven-version>${project.version}</Maven-version>
+								<Maven-build-timestamp>${maven.build.timestamp}</Maven-build-timestamp>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<!-- Reporting plugins : Plugins which generate reports, are configured
+					as reports in the POM and run under the site generation lifecycle. -->
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<plugin>
+					<!-- The Javadoc Plugin uses the Javadoc tool to generate javadocs for
+						the specified project. -->
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
+					<configuration>
+						<minmemory>128m</minmemory>
+						<maxmemory>512m</maxmemory>
+						<source>${java.version}</source>
+						<doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
+						<docletArtifact>
+							<groupId>gr.spinellis</groupId>
+							<artifactId>UmlGraph</artifactId>
+							<version>4.6</version>
+						</docletArtifact>
+						<additionalparam>
+							-inferrel
+							-inferdep
+							-quiet
+							-hide java.*
+							-collpackages
+							java.util.*
+							-qualify
+							-constructors
+							-visibility
+							-types
+							-postfixpackage
+							-nodefontsize 9
+							-nodefontpackagesize 7
+						</additionalparam>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- The Surefire Report Plugin parses the generated TEST-*.xml files
+						under ${basedir}/target/surefire-reports and renders them to DOXIA which
+						creates the web interface version of the test results. -->
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>${maven-surefire-report-plugin.version}</version>
+				</plugin>
+			    <plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-rar-plugin</artifactId>
+					<version>${maven-rar-plugin.version}</version>
+					<configuration>
+					 	<rarSourceDirectory>src/main/resources</rarSourceDirectory>
+					</configuration>
+			    </plugin>
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<!-- Tools : These are miscellaneous tools available through Maven by
+					default. -->
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<plugin>
+					<!-- Generate a skeleton project structure from an archetype. -->
+					<artifactId>maven-archetype-plugin</artifactId>
+					<version>${maven-archetype-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<!-- Build an assembly (distribution) of sources and/or binaries. -->
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${maven-assembly-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<!-- Dependency manipulation (copy, unpack) and analysis. -->
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<!-- Environmental constraint checking (Maven Version, JDK etc), User
+						Custom Rule Execution. -->
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<!-- Get information about the working environment for the project. -->
+					<artifactId>maven-help-plugin</artifactId>
+					<version>${maven-help-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<!-- Release the current project - updating the POM and tagging in the
+						SCM. -->
+					<artifactId>maven-release-plugin</artifactId>
+					<version>${maven-release-plugin.version}</version>
+					<configuration>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<!-- During release:perform, enable the "prod" profile -->
+						<releaseProfiles>prod</releaseProfiles>
+						<!-- Compiler les jar de sources durant la phase maven
+							release:prepare -->
+						<!-- les preparationGoals du maven-release-plugin
+							n'activent pas les phases normales du cycle de vie Maven -->
+						<preparationGoals>clean process-resources source:jar-no-fork
+							install</preparationGoals>
+						<!-- ask only once per SNAPSHOT artifact -->
+						<forceUniqueArtifactVersion>true</forceUniqueArtifactVersion>
+						<!-- Ne plus demander si on doit rÃ©soudre les snapshots -->
+						<alwaysResolveSnapshots>true</alwaysResolveSnapshots>
+						<!-- Ne plus demander quel type de dÃ©pendances rÃ©soudre
+							( 0:All 1:Project Dependencies 2:Plugins 3:Reports 4:Extensions ) -->
+						<alwaysResolveDependencyType>1</alwaysResolveDependencyType>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Build a JAR of sources for use in IDEs and distribution to the
+						repository. -->
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${versions-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+        			<artifactId>build-helper-maven-plugin</artifactId>
+        			<version>${build-helper-maven-plugin.version}</version>
+        		</plugin>
+				<plugin>
+  					<groupId>org.apache.maven.plugins</groupId>
+  					<artifactId>maven-invoker-plugin</artifactId>
+        			<version>${maven-invoker-plugin.version}</version>
+        		</plugin>
+				<plugin>
+  					<groupId>com.github.goldin</groupId>
+  					<artifactId>jenkins-maven-plugin</artifactId>
+        			<version>${jenkins-maven-plugin.version}</version>
+        		</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+					<version>${cargo-maven2-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sql-maven-plugin</artifactId>
+					<version>${sql-maven-plugin.version}</version>
+				</plugin>
+
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<!-- GWT -->
+				<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>gwt-maven-plugin</artifactId>
+					<version>${gwt-maven-plugin.version}</version>
+					<configuration>
+
+						<hostedWebapp>${hostedWebapp}</hostedWebapp>
+						<webappDirectory>${webappDirectory}</webappDirectory>
+					</configuration>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.jacoco</groupId>
+										<artifactId>
+											jacoco-maven-plugin
+										</artifactId>
+										<versionRange>
+											[0.6.0.201210061924,)
+										</versionRange>
+										<goals>
+											<goal>prepare-agent</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+  
 </project>

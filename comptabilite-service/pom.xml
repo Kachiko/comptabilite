@@ -17,6 +17,12 @@
   		<artifactId>comptabilite-persistence-api</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>org.personnel.kachiko.framework</groupId>
+  		<artifactId>kachiko-framework-service-parent</artifactId>
+  		<version>1.0</version>
+  		<type>pom</type>
+  	</dependency>
   </dependencies>
   <packaging>pom</packaging>
   <modules>
@@ -24,10 +30,8 @@
   	<module>core</module>
   </modules>
   <parent>
-  	<groupId>org.personnel.kachiko.framework</groupId>
-  	<artifactId>kachiko-framework-service-parent</artifactId>
-  	<version>1.0</version>
+  	<groupId>org.personnel.kachiko.comptabilite</groupId>
+  	<artifactId>comptabilite-parent</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
   </parent>
-  <version>0.0.1-SNAPSHOT</version>
-  <groupId>org.personnel.kachiko.comptabilite</groupId>
 </project>

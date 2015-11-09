@@ -17,6 +17,7 @@ public class RegroupementCompteEntity implements Serializable {
 	@Id
 	private Integer id;
 
+	@Column(length=25)
 	private String nom;
 
 	public RegroupementCompteEntity() {
