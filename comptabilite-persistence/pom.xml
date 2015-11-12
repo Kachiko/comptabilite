@@ -13,11 +13,6 @@
   </parent>
   <dependencies>
   	<dependency>
-  		<groupId>jboss</groupId>
-  		<artifactId>jboss-ejb3x</artifactId>
-  		<version>4.2.2.GA</version>
-  	</dependency>
-  	<dependency>
   		<groupId>org.personnel.kachiko.framework</groupId>
   		<artifactId>kachiko-framework-persistence-core</artifactId>
   		<version>0.0.1-SNAPSHOT</version>

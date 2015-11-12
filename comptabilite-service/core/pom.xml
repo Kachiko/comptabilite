@@ -11,6 +11,8 @@
   		<groupId>org.personnel.kachiko.comptabilite</groupId>
   		<artifactId>comptabilite-service-api</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
+  		<scope>runtime</scope>
   	</dependency>
   </dependencies>
+  <packaging>ejb</packaging>
 </project>

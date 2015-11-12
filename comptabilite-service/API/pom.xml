@@ -6,4 +6,5 @@
   	<artifactId>comptabilite-service</artifactId>
   	<version>0.0.1-SNAPSHOT</version>
   </parent>
+  <packaging>ejb</packaging>
 </project>

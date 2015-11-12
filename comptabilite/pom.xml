@@ -76,6 +76,11 @@
   		<artifactId>kachiko-framework-common</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>jboss</groupId>
+  		<artifactId>jboss-ejb3x</artifactId>
+  		<version>4.2.2.GA</version>
+  	</dependency>
   </dependencies>
   <dependencyManagement>
   	<dependencies>
