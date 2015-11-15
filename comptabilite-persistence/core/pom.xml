@@ -5,7 +5,7 @@
   <artifactId>comptabilite-persistence-core</artifactId>
   <packaging>ejb</packaging>
 
-  <name>data-access</name>
+  <name>comptabilite-persistence-core</name>
   <url>http://maven.apache.org</url>
 
   <properties>

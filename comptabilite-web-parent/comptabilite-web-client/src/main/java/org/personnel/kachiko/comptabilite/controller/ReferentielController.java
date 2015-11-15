@@ -10,15 +10,15 @@ import org.personnel.kachiko.comptabilite.service.ReferentielComptableSvc;
 @SessionScoped
 public class ReferentielController {
 	
-//	@EJB
-//	private ReferentielComptableSvc referentielSvc;
+	@EJB
+	private ReferentielComptableSvc referentielSvc;
 	
 	public ReferentielController(){
 		System.out.println("referentielController");
 	}
 
 	public String appelRef(){
-//		referentielSvc.getListCompteComptable();
+		referentielSvc.getListCompteComptable();
 		return "/faces/test2";
 	}
 	

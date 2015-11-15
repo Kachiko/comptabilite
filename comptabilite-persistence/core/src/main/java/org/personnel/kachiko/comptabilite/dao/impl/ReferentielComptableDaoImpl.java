@@ -2,6 +2,7 @@ package org.personnel.kachiko.comptabilite.dao.impl;
 
 import java.util.List;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceUnit;
@@ -17,6 +18,7 @@ import org.personnel.kachiko.comptabilite.persistence.dto.RegroupementCompteDto;
 import org.personnel.kachiko.framework.utils.DozerUtil;
 
 @Stateful
+@Remote(ReferentielComptableDao.class)
 public class ReferentielComptableDaoImpl implements ReferentielComptableDao {
 
 	@PersistenceUnit(unitName="compta")
@@ -32,7 +34,7 @@ public class ReferentielComptableDaoImpl implements ReferentielComptableDao {
 		return DozerUtil.map(listeCompte, CompteComptableDto.class);
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
 	public List<RegroupementCompteDto> getListRegroupement() {
 		List<RegroupementCompteEntity> listeRegroupement;
 		Query qry = em.createNamedQuery("Regroupement_Compte.findAll");
