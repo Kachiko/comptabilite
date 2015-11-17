@@ -2,9 +2,9 @@ package org.personnel.kachiko.comptabilite.service.impl;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 
 import org.personnel.kachiko.comptabilite.persistence.dao.ReferentielComptableDao;
 import org.personnel.kachiko.comptabilite.persistence.dto.CompteComptableDto;
@@ -14,11 +14,23 @@ import org.personnel.kachiko.comptabilite.service.ReferentielComptableSvc;
 @Remote(ReferentielComptableSvc.class)
 public class ReferentielComptableSvcImpl implements ReferentielComptableSvc {
 
-	@Inject
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@EJB
 	ReferentielComptableDao dao;
 	
 	public List<CompteComptableDto> getListCompteComptable(){
 		return dao.getListCompteComptable();
+	}
+
+	public ReferentielComptableDao getDao() {
+		return dao;
+	}
+
+	public void setDao(ReferentielComptableDao dao) {
+		this.dao = dao;
 	}
 	
 }

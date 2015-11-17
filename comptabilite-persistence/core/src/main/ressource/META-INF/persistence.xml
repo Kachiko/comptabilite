@@ -2,7 +2,7 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="compta" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>ComptaDev</jta-data-source>
+		<jta-data-source>java:/ComptaDev</jta-data-source>
 		<class>org.personnel.kachiko.comptabilite.entities.CompteComptableEntity</class>
 		<class>org.personnel.kachiko.comptabilite.entities.JournalEcritureEntity</class>
 		<class>org.personnel.kachiko.comptabilite.entities.LnkCompteRegroupementEntity</class>

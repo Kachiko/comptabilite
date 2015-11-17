@@ -3,9 +3,9 @@ package org.personnel.kachiko.comptabilite.dao.impl;
 import java.util.List;
 
 import javax.ejb.Remote;
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.dozer.DozerBeanMapper;
@@ -17,11 +17,16 @@ import org.personnel.kachiko.comptabilite.persistence.dto.CompteComptableDto;
 import org.personnel.kachiko.comptabilite.persistence.dto.RegroupementCompteDto;
 import org.personnel.kachiko.framework.utils.DozerUtil;
 
-@Stateful
+@Stateless
 @Remote(ReferentielComptableDao.class)
 public class ReferentielComptableDaoImpl implements ReferentielComptableDao {
 
-	@PersistenceUnit(unitName="compta")
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@PersistenceContext(unitName="compta")
 	private EntityManager em;
 
 	Mapper mapper = new DozerBeanMapper();
@@ -40,6 +45,14 @@ public class ReferentielComptableDaoImpl implements ReferentielComptableDao {
 		Query qry = em.createNamedQuery("Regroupement_Compte.findAll");
 		listeRegroupement = qry.getResultList();
 		return DozerUtil.map(listeRegroupement, RegroupementCompteDto.class);
+	}
+
+	public EntityManager getEm() {
+		return em;
+	}
+
+	public void setEm(EntityManager em) {
+		this.em = em;
 	}
 	
 }
