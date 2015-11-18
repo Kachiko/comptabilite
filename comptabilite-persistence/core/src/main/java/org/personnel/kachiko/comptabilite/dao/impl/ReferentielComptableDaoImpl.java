@@ -15,26 +15,22 @@ import org.personnel.kachiko.comptabilite.entities.RegroupementCompteEntity;
 import org.personnel.kachiko.comptabilite.persistence.dao.ReferentielComptableDao;
 import org.personnel.kachiko.comptabilite.persistence.dto.CompteComptableDto;
 import org.personnel.kachiko.comptabilite.persistence.dto.RegroupementCompteDto;
+import org.personnel.kachiko.framework.dao.AbstractDao;
 import org.personnel.kachiko.framework.utils.DozerUtil;
 
 @Stateless
 @Remote(ReferentielComptableDao.class)
-public class ReferentielComptableDaoImpl implements ReferentielComptableDao {
+public class ReferentielComptableDaoImpl extends AbstractDao implements ReferentielComptableDao {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	@PersistenceContext(unitName="compta")
-	private EntityManager em;
-
-	Mapper mapper = new DozerBeanMapper();
 	
 	@SuppressWarnings("unchecked")
 	public List<CompteComptableDto> getListCompteComptable() {
 		List<CompteComptableEntity> listeCompte;
-		Query qry = em.createNamedQuery("Compte_Comptable.findAll");
+		Query qry = getEm().createNamedQuery("Compte_Comptable.findAll");
 		listeCompte = qry.getResultList();
 		return DozerUtil.map(listeCompte, CompteComptableDto.class);
 	}
@@ -42,17 +38,9 @@ public class ReferentielComptableDaoImpl implements ReferentielComptableDao {
 	@SuppressWarnings("unchecked")
 	public List<RegroupementCompteDto> getListRegroupement() {
 		List<RegroupementCompteEntity> listeRegroupement;
-		Query qry = em.createNamedQuery("Regroupement_Compte.findAll");
+		Query qry = getEm().createNamedQuery("Regroupement_Compte.findAll");
 		listeRegroupement = qry.getResultList();
 		return DozerUtil.map(listeRegroupement, RegroupementCompteDto.class);
-	}
-
-	public EntityManager getEm() {
-		return em;
-	}
-
-	public void setEm(EntityManager em) {
-		this.em = em;
 	}
 	
 }

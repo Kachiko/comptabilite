@@ -1,12 +1,15 @@
 package org.personnel.kachiko.comptabilite.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.personnel.kachiko.comptabilite.model.ReferentielComptesView;
 import org.personnel.kachiko.comptabilite.service.ReferentielComptableSvc;
+import org.personnel.kachiko.framework.utils.DozerUtil;
 
 @ManagedBean(name="referentielController",eager=true)
 @SessionScoped
@@ -19,13 +22,13 @@ public class ReferentielController implements Serializable {
 	
 	@EJB
 	private ReferentielComptableSvc referentielSvc;
+	private List<ReferentielComptesView> listeComptes;
 	
 	public ReferentielController(){
-		System.out.println("referentielController");
 	}
 
 	public String appelRef(){
-		referentielSvc.getListCompteComptable();
+		listeComptes = DozerUtil.map(referentielSvc.getListCompteComptable(), ReferentielComptesView.class);
 		return "/faces/test2";
 	}
 
@@ -35,6 +38,14 @@ public class ReferentielController implements Serializable {
 
 	public void setReferentielSvc(ReferentielComptableSvc referentielSvc) {
 		this.referentielSvc = referentielSvc;
+	}
+
+	public List<ReferentielComptesView> getListeComptes() {
+		return listeComptes;
+	}
+
+	public void setListeComptes(List<ReferentielComptesView> listeComptes) {
+		this.listeComptes = listeComptes;
 	}
 	
 }

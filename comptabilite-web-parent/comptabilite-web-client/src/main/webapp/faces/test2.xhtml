@@ -1,11 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html  xmlns="http://www.w3.org/1999/xhtml"
- 	xmlns:h="http://java.sun.com/jsf/html">
+ 	xmlns:h="http://java.sun.com/jsf/html"
+ 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
 <title>Insert title here</title>
 </head>
 <body>
 test2
+<h:dataTable value="#{referentielController.listeComptes}" var="compte2">
+    <h:column>
+        <h:outputLabel>#{compte2.libelle}</h:outputLabel>
+    </h:column>
+</h:dataTable>
+
+	<ui:repeat value="#{referentielController.listeComptes}" var="compte">
+        <li>
+        	<h:outputLabel>#{compte.libelle}</h:outputLabel>
+        </li>
+    </ui:repeat>
 </body>
 </html>
