@@ -4,12 +4,8 @@ import java.util.List;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 import org.personnel.kachiko.comptabilite.entities.CompteComptableEntity;
 import org.personnel.kachiko.comptabilite.entities.RegroupementCompteEntity;
 import org.personnel.kachiko.comptabilite.persistence.dao.ReferentielComptableDao;
