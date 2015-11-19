@@ -1,14 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html  xmlns="http://www.w3.org/1999/xhtml"
- 	xmlns:h="http://java.sun.com/jsf/html">
-<head>
-<title>Insert title here</title>
-</head>
-<body>
-<h:form>
-test
-<h:commandButton action="#{referentielController.appelRef}" value="#{test.msg}"/>
-</h:form>
-</body>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+template="/templates/layout-template.xhtml">
+<ui:define name="title">
+This is the New Title<br/>
+</ui:define>
+<ui:define name="content">
+This is the new content.
+<p/>
+Blah, blah, blah. Yadda, yadda, yadda.
+</ui:define>
+</ui:composition>

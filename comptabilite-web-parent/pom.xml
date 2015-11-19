@@ -10,4 +10,11 @@
   	<artifactId>comptabilite-parent</artifactId>
   	<version>0.0.1-SNAPSHOT</version>
   </parent>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.personnel.kachiko.framework</groupId>
+  		<artifactId>kachiko-framework-web-jsf</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>

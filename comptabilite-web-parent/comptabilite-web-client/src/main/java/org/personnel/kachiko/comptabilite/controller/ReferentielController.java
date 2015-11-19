@@ -29,7 +29,7 @@ public class ReferentielController implements Serializable {
 
 	public String appelRef(){
 		listeComptes = DozerUtil.map(referentielSvc.getListCompteComptable(), ReferentielComptesView.class);
-		return "/faces/test2";
+		return "/view/test2";
 	}
 
 	public ReferentielComptableSvc getReferentielSvc() {
